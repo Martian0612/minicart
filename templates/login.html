@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Login
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class = "container mt-5">
+    
+
+    <form class = "col-6 mx-auto card p-3 shadow-lg" method = "post">
+        {% if messages %}
+            {{messages}}
+        {% endif %}
+        {% csrf_token %}
+        <h2> Login </h2>
+        <hr>
+
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile</label>
+          <input type="text" required class="form-control" id="mobile" name = "mobile" required>
+        </div>
+
+        <p>Don't have an account? <a href="/register">Sign-up</a></p>
+        {% comment %} <button class = "btn btn-primary "><a href="{% url 'otp' %}"></a>OTP</button> {% endcomment %}
+        <a href="{% url 'otp' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Link</a>
+        {% comment %} <button type="submit" class="btn btn-primary">Otp</button> {% endcomment %}
+      </form>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    
+    {% if context %}
+        ENTER OTP SENT TO <strong>{{context.mobile}}</strong>
+    {% endif %}
+        
+   
+{% endblock title %}
+    
+
+{% block content %}
+
+<div class = "container mt-5">
+    
+
+    <form class = "col-6 mx-auto card p-3 shadow-lg" method = "post">
+        {% if messages %}
+            {{messages}}
+        {% endif %}
+        {% csrf_token %}
+        <h2> OTP </h2>
+        <hr>
+
+        <div class="mb-3">
+          <label for="otp" class="form-label">OTP</label>
+          <input type="text" required class="form-control" id="otp" name = "otp" required>
+        </div>
+
+        <a href="{% url 'register' %}" name = "resend" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Resend otp</a>
+
+        <p>Don't have an account? <a href="/register">Sign-up</a></p>
+        <a href="{% url 'show_items' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
+        {% comment %} <button type="submit" class="btn btn-primary">Login</button> {% endcomment %}
+      </form>
+
+</div>
+{% endblock content %}

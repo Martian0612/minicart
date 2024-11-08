@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock title %}
+    
+{% block content %}
+
+<div class = "container mt-5">
+
+    <form class = "col-6 mx-auto card p-3 shadow-lg" method = "post">
+        {% if messages %}
+            
+            <div class= "alert alert-primary alert-dismissible " role= "alert">
+                {% for message in messages %}
+                    {{message}}
+                    <button type = "button" class = "btn-close" data-bs-dismiss = "alert" aria-label= "Close"></button>
+                {% endfor %}
+            </div>
+            
+        {% endif %}
+        {% csrf_token %}
+        <h2> Register </h2>
+        <hr>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" required class="form-control" id="exampleInputEmail1" name = "email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name = "name" >
+        </div>
+    
+        <div class="mb-3">
+          <label for="Mobile" class="form-label">Mobile</label>
+          <input type="text" class="form-control" id="mobile" name = "mobile" required>
+        </div>
+    
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <a href="{% url 'otp' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Link</a>
+        {% comment %} <button type="submit" class="btn btn-primary">Sign-Up</button> {% endcomment %}
+      </form>
+
+</div>
+{% endblock content %}
+    
